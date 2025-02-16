@@ -1,48 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/background"
     android:padding="20dp">
 
-    <!-- Circular Logo -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:scaleType="fitCenter"
-        android:background="@drawable/circle_shape"
-        android:padding="10dp"/>
-
-    <!-- Name Input Field -->
-    <EditText
-        android:id="@+id/nameInput"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your name"
-        android:textSize="18sp"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="30dp"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"
-        android:textColor="#000"
-        android:textColorHint="#666"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
 
-    <!-- Start Quiz Button (Placed at Bottom) -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Quiz Logo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your name"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            android:paddingStart="16dp"/>
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="John Doe..."
+            android:background="@drawable/rounded_rectangle"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textCursorDrawable="@android:color/black"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp"/>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/startQuiz"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Quiz"
+        android:layout_height="50dp"
+        android:text="Start"
         android:textSize="18sp"
-        android:textColor="#FFF"
-        android:background="@drawable/button_background"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginHorizontal="30dp"
-        android:padding="12dp"/>
-</RelativeLayout>
+        android:textColor="@android:color/black"
+        android:backgroundTint="@color/yellow"
+        android:layout_marginBottom="40dp"
+        android:enabled="false"/>
+</LinearLayout>

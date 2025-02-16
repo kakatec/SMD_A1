@@ -68,6 +68,7 @@ public class QuizActivity extends AppCompatActivity {
         questionNumber = findViewById(R.id.questionNumber);
         optionsGroup = findViewById(R.id.optionsGroup);
         nextButton = findViewById(R.id.nextButton);
+        String userName = getIntent().getStringExtra("user_name");
 
         nextButton.setEnabled(false); // Disable Next button initially
 
@@ -95,6 +96,7 @@ public class QuizActivity extends AppCompatActivity {
                     Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
                     intent.putExtra("score", score);
                     intent.putExtra("totalQuestions", questions.length);
+                    intent.putExtra("user_name", userName);
                     startActivity(intent);
                     finish();
                 }

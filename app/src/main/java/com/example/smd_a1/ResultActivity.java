@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private TextView resultText;
-    private Button restartButton, shareButton;
+    private TextView resultText,nameText;
+    private Button  shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +18,16 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         resultText = findViewById(R.id.resultText);
-        restartButton = findViewById(R.id.restartButton);
-        shareButton = findViewById(R.id.shareButton);  // New Share Button
 
+        shareButton = findViewById(R.id.shareButton);  // New Share Button
+        nameText=findViewById(R.id.nameText);
         int score = getIntent().getIntExtra("score", 0);
         int totalQuestions = getIntent().getIntExtra("totalQuestions", 10);
+        String userName = getIntent().getStringExtra("user_name");
 
-        resultText.setText("You scored " + score + " out of " + totalQuestions);
+        resultText.setText( score + " / " + totalQuestions);
+        nameText.setText(userName);
 
-        restartButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ResultActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
 
         // Share Score using Implicit Intent
         shareButton.setOnClickListener(v -> {
@@ -40,5 +37,10 @@ public class ResultActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "Share your score via"));
         });
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Close the activity when back arrow is pressed
+        return true;
     }
 }
